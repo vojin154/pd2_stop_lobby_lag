@@ -14,6 +14,7 @@ function ConnectionNetworkHandler:sync_outfit(outfit_string, outfit_version, out
         --After loading into the lobby when the peer is already in inventory
         --So we skip the first check and let the original run for that matter for each connected peer
         --No need to check for future connecting peers after we are loaded as those will be put into "lobby" state and will run the original
+        skip_first[peer:id()] = true
         return old_func(self, outfit_string, outfit_version, outfit_signature, sender)
     end
 

@@ -25,10 +25,10 @@ function ConnectionNetworkHandler:sync_outfit(outfit_string, outfit_version, out
     if state and state ~= "lobby" then
         --When syncing over and over this info will be overwritten, so no need to make other checks
         peer._stop_lobby_lag = {
-            outfit_string = outfit_string,
-            outfit_version = outfit_version,
-            outfit_signature = outfit_signature,
-            sender = sender
+            outfit_string,
+            outfit_version,
+            outfit_signature,
+            sender
         }
         return
     end

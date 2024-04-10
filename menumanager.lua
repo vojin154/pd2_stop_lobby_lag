@@ -3,7 +3,8 @@ Hooks:PostHook(MenuManager, "_set_peer_sync_state", "_set_peer_sync_state_stop_l
         return
     end
 
-    local sync_outfit_data = _G._stop_lobby_lag and _G._stop_lobby_lag[peer_id]
+    local peer = managers.network:session():peer(peer_id)
+    local sync_outfit_data = peer and peer._stop_lobby_lag
 
     if sync_outfit_data then
             local outfit_string = sync_outfit_data.outfit_string

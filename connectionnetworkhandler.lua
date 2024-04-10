@@ -20,12 +20,11 @@ function ConnectionNetworkHandler:sync_outfit(outfit_string, outfit_version, out
 
     local state = managers.menu:get_peer_state(peer:id())
 
-    --If peer isn't in the ready state (lobby)
-    --Or isn't fully loaded yet, resulting in nil
+    --If peer isn't in the ready state ("lobby")
+    --Or isn't fully loaded yet, resulting in state being nil
     if state and state ~= "lobby" then
-        _G._stop_lobby_lag = _G._stop_lobby_lag or {}
         --When syncing over and over this info will be overwritten, so no need to make other checks
-        _G._stop_lobby_lag[peer:id()] = {
+        peer._stop_lobby_lag = {
             outfit_string = outfit_string,
             outfit_version = outfit_version,
             outfit_signature = outfit_signature,

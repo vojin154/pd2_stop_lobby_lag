@@ -3,7 +3,7 @@
 	"description" : "Stops the lag, that happens when players in the lobby keep changing skills, weapons and such",
 	"author" : "vojin154",
 	"contact" : "vojin154 (Discord)",
-	"version" : "1.3",
+	"version" : "1.4",
 	"updates": [
 		{
 			"identifier": "stop_lobby_lag",
@@ -15,11 +15,11 @@
 	"hooks" : [
 		{
 			"hook_id": "lib/network/base/handlers/connectionnetworkhandler",
-			"script_path": "connectionnetworkhandler.lua"
+			"script_path": "hooks/connectionnetworkhandler.lua"
 		},
 		{
 			"hook_id": "lib/managers/menumanager",
-			"script_path": "menumanager.lua"
+			"script_path": "hooks/menumanager.lua"
 		}
 	]
 }

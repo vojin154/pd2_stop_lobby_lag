@@ -8,6 +8,10 @@ local function hook_function(func_name)
         --If it exists override the function, to add a check if the player is ready
         --If he is, then run the original function
         NetworkPeer[func_name] = function(self, ...)
+            if not (managers.network:session() and managers.network:session():_local_peer_in_lobby()) then
+                return func(self, ...)
+            end
+
             local state = managers.menu:get_peer_state(self:id())
 
             if state and state == "lobby" then

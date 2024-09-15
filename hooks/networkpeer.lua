@@ -14,7 +14,7 @@ local function hook_function(func_name)
 
             local state = managers.menu:get_peer_state(self:id())
 
-            if state and state == "lobby" then
+            if state and state ~= "lobby" then
                 return
             end
 

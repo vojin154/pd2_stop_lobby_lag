@@ -1,5 +1,5 @@
 Hooks:PostHook(MenuManager, "_set_peer_sync_state", "_set_peer_sync_state_stop_lobby_lag", function(self, peer_id, state)
-    if (state ~= "lobby") or (not peer_id) or (not (managers.network:session() and managers.network:session():_local_peer_in_lobby())) then
+    if (state and state ~= "lobby") or (not peer_id) or (not (managers.network and managers.network:session() and managers.network:session():_local_peer_in_lobby())) then
         return
     end
 

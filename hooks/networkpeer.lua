@@ -1,3 +1,5 @@
+
+local skip_first = {}
 local function hook_function(func_name)
     --If the function exists, save it
     local func = NetworkPeer[func_name]
@@ -13,6 +15,12 @@ local function hook_function(func_name)
             end
 
             local state = managers.menu:get_peer_state(self:id())
+
+            --Again skip the first check to ensure loading the character
+            if not skip_first[self:id()] then
+                skip_first[self:id()] = true
+                return func(self, ...)
+            end
 
             if state and state ~= "lobby" then
                 return
